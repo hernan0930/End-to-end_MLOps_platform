@@ -1,0 +1,27 @@
+services:
+  mlflow:
+    image: ghcr.io/mlflow/mlflow:v2.11.0
+    ports: ["5000:5000"]
+    environment:
+      MLFLOW_BACKEND_STORE_URI: postgresql://mlflow:mlflow@postgres/mlflow
+      MLFLOW_DEFAULT_ARTIFACT_ROOT: s3://mlflow-artifacts/
+      AWS_ACCESS_KEY_ID: minioadmin
+      AWS_SECRET_ACCESS_KEY: minioadmin
+      MLFLOW_S3_ENDPOINT_URL: http://minio:9000
+
+  minio:   # local replacement for S3
+    image: minio/minio
+    command: server /data --console-address ":9001"
+    ports: ["9000:9000","9001:9001"]
+
+  prefect: # local replacement for Step Functions
+    image: prefecthq/prefect:2-python3.11
+    ports: ["4200:4200"]
+
+  grafana:   # same as AWS Managed Grafana
+    image: grafana/grafana-oss
+    ports: ["3000:3000"]
+
+  prometheus:    # same as AWS Managed Prometheus
+    image: prom/prometheus
+    ports: ["9090:9090"]
