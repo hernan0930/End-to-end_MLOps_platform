@@ -1,3 +1,9 @@
+up:
+	docker compose up -d
+
+down:
+	docker compose down
+
 pipeline:
 	docker compose up -d
 	python pipelines/train.py
