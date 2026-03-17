@@ -1,0 +1,6 @@
+# Data files are tracked by DVC, not git — only .dvc pointer files are committed
+/raw/*.csv
+/raw/*.parquet
+/raw/*.json
+/processed/*.csv
+/processed/*.parquet
