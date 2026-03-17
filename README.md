@@ -34,13 +34,35 @@ Data → S3 (MinIO local) → SageMaker Pipeline (local: sklearn pipeline)
 
 ---
 
-## Run locally in 3 commands
+## Local setup
+
+**Prerequisites:** Docker Desktop, Python 3.11, `make`
 
 ```bash
-git clone https://github.com/you/mlops-platform
-docker compose up -d    # starts MLflow, MinIO, Grafana, Prefect
-make pipeline           # trains model, registers, deploys locally
+# 1. Clone and configure environment
+git clone https://github.com/hernan0930/End-to-end_MLOps_platform
+cd End-to-end_MLOps_platform
+cp .env.example .env          # edit values if needed
+
+# 2. Start the full local stack
+make up
+# Waits for Postgres to be healthy, creates MinIO buckets, then starts MLflow
+
+# 3. Verify services
+#   MLflow UI      → http://localhost:5000
+#   MinIO console  → http://localhost:9001  (user: minioadmin / minioadmin)
+#   Prefect UI     → http://localhost:4200
+#   Grafana        → http://localhost:3000
+#   Prometheus     → http://localhost:9090
+
+# 4. Run the training pipeline
+make pipeline
+
+# 5. Tear down
+make down
 ```
+
+> **Note:** On first run `minio-init` automatically creates the `mlflow-artifacts` and `drift-reports` buckets before MLflow starts.
 
 ---
 
