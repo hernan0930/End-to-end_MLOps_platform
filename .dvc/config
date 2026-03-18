@@ -1,0 +1,7 @@
+[core]
+    remote = local
+['remote "local"']
+    url = s3://mlflow-artifacts/dvc
+    endpointurl = http://localhost:9000
+    access_key_id = minioadmin
+    secret_access_key = minioadmin
