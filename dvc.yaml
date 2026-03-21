@@ -12,3 +12,18 @@ stages:
       - data/processed/X_test.csv
       - data/processed/y_train.csv
       - data/processed/y_test.csv
+
+  train:
+    cmd: python pipelines/train.py
+    deps:
+      - pipelines/train.py
+      - data/processed/X_train.csv
+      - data/processed/X_test.csv
+      - data/processed/y_train.csv
+      - data/processed/y_test.csv
+    params:
+      - train.n_estimators
+      - train.learning_rate
+      - train.max_depth
+      - train.subsample
+      - train.random_state
