@@ -14,7 +14,7 @@ Full MLOps pipeline covering training, versioning, CI/CD deployment, drift monit
 
 ```
 Data → S3 (MinIO local) → SageMaker Pipeline (local: sklearn pipeline)
-     → MLflow Registry → GitLab CI quality gate
+     → MLflow Registry → Github/Gitlab → CI quality gate
      → SageMaker Endpoint (local: FastAPI)
      → CloudWatch (local: Prometheus + Grafana)
      → Model Monitor (local: Evidently)
