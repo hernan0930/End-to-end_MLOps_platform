@@ -19,3 +19,24 @@ data/raw/*.parquet
 data/raw/*.json
 data/processed/*.csv
 data/processed/*.parquet
+# Python virtual environment
+.venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+
+# DVC internal cache
+.dvc/tmp/
+.dvc/cache/
+
+# Environment variables
+.env
+
+# Data files are managed by DVC — ignore the actual files but NOT the .dvc pointer files
+data/raw/*.csv
+data/raw/*.parquet
+data/raw/*.json
+data/processed/*.csv
+data/processed/*.parquet

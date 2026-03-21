@@ -1,0 +1,14 @@
+stages:
+  preprocess:
+    cmd: python pipelines/preprocess.py
+    deps:
+      - data/raw/dataset.csv
+      - pipelines/preprocess.py
+    params:
+      - preprocess.test_size
+      - preprocess.random_state
+    outs:
+      - data/processed/X_train.csv
+      - data/processed/X_test.csv
+      - data/processed/y_train.csv
+      - data/processed/y_test.csv
